@@ -1,0 +1,35 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-12 col-sm-8 col-md-6 col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Image To Text</h4>
+          <%= form_for ImageFile.new, url: '/ocr/file_scan', method: :post do |f| %>
+            <div class="form-group">
+               <%= f.file_field :file, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <label>Language</label>
+              <%= select_tag 'lang', options_for_select(language_options), class: 'form-control', autocomplete: 'off' %>
+            </div>
+            <hr>
+            <div class="form-group">
+               <%= f.submit :upload, class: 'btn btn-warning w-100' %>
+            </div>
+
+          <% end %>
+          <div class="buy d-flex justify-content-between align-items-center">
+            <div class="price text-success"><h5 class="mt-4">Output</h5></div>
+          </div>
+          <div class=""><p class="mt-4"><%= raw(@text) %></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
